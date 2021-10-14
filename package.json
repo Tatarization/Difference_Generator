@@ -1,0 +1,35 @@
+{
+  "name": "project-2",
+  "version": "1.0.0",
+  "description": "<a href=\"https://codeclimate.com/github/Tatarization/Project2/maintainability\"><img src=\"https://api.codeclimate.com/v1/badges/80e0f2787a331f39111a/maintainability\" /></a> <a href=\"https://codeclimate.com/github/Tatarization/Project2/test_coverage\"><img src=\"https://api.codeclimate.com/v1/badges/80e0f2787a331f39111a/test_coverage\" /></a> [![Node.js CI](https://github.com/Tatarization/Project2/actions/workflows/node.js.yml/badge.svg)](https://github.com/Tatarization/Project2/actions/workflows/node.js.yml) [![Build Status](https://app.travis-ci.com/Tatarization/Project2.svg?branch=main)](https://app.travis-ci.com/Tatarization/Project2)",
+  "type": "module",
+  "main": "bin/gendiff.js",
+  "scripts": {
+    "lint": "eslint ./src",
+    "lint-fix": "eslint ./src --fix",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
+  },
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^8.2.0",
+    "js-yaml": "^4.1.0",
+    "link": "^0.1.5",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jest": "^24.4.2",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.2.5",
+    "prettier": "^2.4.1"
+  }
+}
