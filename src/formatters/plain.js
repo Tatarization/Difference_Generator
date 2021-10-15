@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { isString, isObject } from '../functions.js';
 
 const createValue = (value) => {
@@ -8,8 +7,7 @@ const createValue = (value) => {
 	return isString(value) ? `'${value}'` : value;
 };
 
-function flatten(arr)
-{
+const flatten = (arr) => {
 	return arr.reduce((acc, cur) => acc.concat(Array.isArray(cur) ? flatten(cur) : cur), []);
 };
 
