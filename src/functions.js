@@ -2,7 +2,7 @@ import { cwd } from 'process';
 import path from 'path';
 import { readFileSync } from 'fs';
 
-export const readFile = (filepath) => readFileSync(path.isAbsolute(filepath) ? filepath : path.resolve(cwd(), `${filepath}`), 'utf8');
+export const readFile = (filepath) => readFileSync(path.isAbsolute(filepath) ? filepath : path.resolve(cwd(), filepath), 'utf8');
 
 export const getExtofFile = (filepath) => path.extname(filepath);
 

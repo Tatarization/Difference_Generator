@@ -29,6 +29,7 @@ export const stylish = (object, deep = 0) => {
 
 				case 'different value':
 					return `${prev}\n${createLineOfString('-', node.value1)}\n${createLineOfString('+', node.value2)}`;
+
 				default:
 					throw new Error('Non-existent type');
 			}

@@ -1,19 +1,24 @@
 import _ from 'lodash';
 import { isString, isObject } from '../functions.js';
 
-const createString = (value) => {
+const createValue = (value) => {
 	if (isObject(value)) {
 		return '[complex value]';
 	}
 	return isString(value) ? `'${value}'` : value;
 };
 
+function flatten(arr)
+{
+	return arr.reduce((acc, cur) => acc.concat(Array.isArray(cur) ? flatten(cur) : cur), []);
+};
+
 export const plain = (object) => {
-	const createLineOfString = (data, prop) => data.map((node) => {
-		const property = prop === null ? `${prop}.${node.property}` : node.property;
+	const createProperty = (data, prop) => data.map((node) => {
+		const property = prop ? `${prop}.${node.property}` : node.property;
 		switch (node.type) {
 				case 'recursive':
-					return createLineOfString(node.children, property);
+					return createProperty(node.children, property);
 
 				case 'equal':
 					return '';
@@ -22,14 +27,15 @@ export const plain = (object) => {
 					return `Property '${property}' was removed`;
 
 				case 'added':
-					return `Property '${property}' was added with value: ${createString(node.value2)}`;
+					return `Property '${property}' was added with value: ${createValue(node.value2)}`;
 
 				case 'different value':
-					return `Property '${property}' was updated. From ${createString(node.value1)} to ${createString(node.value2)}`;
+					return `Property '${property}' was updated. From ${createValue(node.value1)} to ${createValue(node.value2)}`;
 
 				default:
 					throw new Error('Non-existent type');
 		}
 	});
-	return _.flattenDeep(createLineOfString(object, '')).filter(value => value !== '').join('\n');
+	return flatten(createProperty(object, '')).filter(value => value !== '').join('\n');
+
 };
