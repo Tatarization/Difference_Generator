@@ -31,7 +31,7 @@ export const getTree = (object1, object2) => {
 				};
 			}
 
-			if ((typeof object1[node] === typeof object2[node] && object1[node] === object2[node])) {
+			if ((object1[node] === object2[node])) {
 				return {
 					property: node,
 					type: 'equal',
