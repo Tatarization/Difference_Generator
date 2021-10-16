@@ -10,9 +10,10 @@
   -V, --version        output the version number
   -f, --format [type]  output format
   -h, --help           display help for command
-```
+``` 
 ### Установка
 `make install | make link`
+___
 ### Вывод отличий в формате stylish
 [stylish](https://asciinema.org/a/V1pzIZhX71mTEx4QFtMKRaL5X)
 ### Вывод отличий в формате plain
