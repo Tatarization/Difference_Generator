@@ -1,17 +1,17 @@
-import { plain } from './plain.js';
-import { stylish } from './stylish.js';
-import { json } from './json.js';
+import { formatToPlain } from './plain.js';
+import { formatToStylish } from './stylish.js';
+import { formatToJson } from './json.js';
 
-export const formatters = (tree, format) => {
+export const getFormat = (tree, format) => {
     switch (format) {
         case 'plain':
-            return plain(tree);
+            return formatToPlain(tree);
 
         case 'stylish':
-            return stylish(tree);
+            return formatToStylish(tree);
 
         case 'json':
-            return json(tree);
+            return formatToJson(tree);
 
         default:
             throw new Error('Non-existent type');

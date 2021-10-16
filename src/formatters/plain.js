@@ -1,17 +1,17 @@
-import { isString, isObject } from '../functions.js';
+import _ from 'lodash';
+
+const isObject = (value) => typeof value === 'object' && value !== null;
 
 const createValue = (value) => {
 	if (isObject(value)) {
 		return '[complex value]';
 	}
-	return isString(value) ? `'${value}'` : value;
+	return _.isString(value) ? `'${value}'` : value;
 };
 
-const flatten = (arr) => {
-	return arr.reduce((acc, cur) => acc.concat(Array.isArray(cur) ? flatten(cur) : cur), []);
-};
+const getFlatArray = (arr) => arr.reduce((acc, cur) => acc.concat(Array.isArray(cur) ? getFlatArray(cur) : cur), []);
 
-export const plain = (object) => {
+export const formatToPlain = (object) => {
 	const createProperty = (data, prop) => data.map((node) => {
 		const property = prop ? `${prop}.${node.property}` : node.property;
 		switch (node.type) {
@@ -34,6 +34,5 @@ export const plain = (object) => {
 					throw new Error('Non-existent type');
 		}
 	});
-	return flatten(createProperty(object, '')).filter(value => value !== '').join('\n');
-
+	return getFlatArray(createProperty(object, '')).filter((value) => value !== '').join('\n');
 };

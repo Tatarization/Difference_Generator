@@ -1,8 +1,9 @@
 import _ from 'lodash';
-import { getObjectKeys, isObject } from './functions.js';
+
+const isObject = (value) => typeof value === 'object' && value !== null;
 
 export const getTree = (object1, object2) => {
-	const uniqueKeys = _.uniq(getObjectKeys(object1).concat(getObjectKeys(object2))).sort();
+	const uniqueKeys = _.uniq(Object.keys(object1).concat(Object.keys(object2))).sort();
 	const result = uniqueKeys.map(
 		(node) => {
 			if (!_.has(object1, node)) {

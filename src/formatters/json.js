@@ -1,1 +1,1 @@
-export const json = (object) => JSON.stringify(object);
+export const formatToJson = (object) => JSON.stringify(object);

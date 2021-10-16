@@ -1,6 +1,12 @@
 import yaml from 'js-yaml';
 
-export default (data, fileExt) => {
-	const format = ['.json', '.yml'];
-	return fileExt === format[0] ? JSON.parse(data) : yaml.load(data);
+export const parse = (data, fileExtention) => {
+	switch (fileExtention) {
+		case '.json':
+			return JSON.parse(data);
+		case '.yml':
+			return yaml.load(data);
+		default:
+			throw new Error('Non-existent type');
+	}
 };

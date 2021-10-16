@@ -15,6 +15,7 @@
         "no-plusplus": "off",
         "no-tabs": "off",
         "indent": ["off", "tabs"],
-        "no-underscore-dangle": [2, { "allow": ["__filename", "__dirname"] }]
+        "no-underscore-dangle": [2, { "allow": ["__filename", "__dirname"] }],
+        "max-len": "off"
     }
 }
