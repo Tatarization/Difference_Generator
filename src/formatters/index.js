@@ -2,7 +2,7 @@ import { formatToPlain } from './plain.js';
 import { formatToStylish } from './stylish.js';
 import { formatToJson } from './json.js';
 
-export const getFormat = (tree, format) => {
+export const getFormatter = (tree, format) => {
     switch (format) {
         case 'plain':
             return formatToPlain(tree);

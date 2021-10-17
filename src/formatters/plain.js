@@ -1,9 +1,7 @@
 import _ from 'lodash';
 
-const isObject = (value) => typeof value === 'object' && value !== null;
-
 const createValue = (value) => {
-	if (isObject(value)) {
+	if (_.isObject(value)) {
 		return '[complex value]';
 	}
 	return _.isString(value) ? `'${value}'` : value;

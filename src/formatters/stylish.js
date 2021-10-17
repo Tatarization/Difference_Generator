@@ -1,9 +1,9 @@
+import _ from 'lodash';
+
 const addSpaces = (deep) => '    '.repeat(deep);
 
-const isObject = (value) => typeof value === 'object' && value !== null;
-
 const createString = (value, deep = 0) => {
-	if (isObject(value)) {
+	if (_.isObject(value)) {
 		const lines = Object.keys(value).map((node) => `${addSpaces(deep + 1)}${node}: ${createString(value[node], deep + 1)}`);
 		return `{\n${lines.join('\n')}\n${addSpaces(deep)}}`;
 	}
